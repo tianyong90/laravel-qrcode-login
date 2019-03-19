@@ -54,18 +54,3 @@ import Echo from 'laravel-echo'
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
-window.io = require('socket.io-client')
-
-window.Echo = new Echo({
-    broadcaster: 'socket.io',
-    host: window.location.hostname + ':6001'
-});
-
-window.Echo.channel('scan-login')
-    .listen('WechatScanLogin', e => {
-
-    console.log('abc')
-    console.log(e)
-    console.log('fuck')
-    })

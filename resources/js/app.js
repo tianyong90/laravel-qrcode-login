@@ -63,26 +63,43 @@ const app = new Vue({
   data () {
     return {
       token: localStorage.getItem('my_token'),
+      user: {}
     }
   },
 
   mounted () {
     EchoInstance.channel('scan-login').listen('WechatScanLogin', e => {
-      console.log(e.token)
+      console.log(e)
       this.token = e.token
       localStorage.setItem('my_token', this.token)
 
       console.log('login')
     })
 
-    axios.get('api/current-user').then(response => {
-      console.log(response.data)
-    })
+    if (this.token) {
+      this.fetchUserInfo()
+    }
   },
 
   methods: {
-    refreshQrcode () {
-
+    fetchUserInfo () {
+      axios.get('api/current-user').then(response => {
+        this.user = response.data
+      })
     },
+
+    logout () {
+      this.token = ''
+      this.user = {}
+      localStorage.removeItem('my_token')
+    }
   },
+
+  watch: {
+    token (val) {
+      if (val) {
+        this.fetchUserInfo()
+      }
+    }
+  }
 })

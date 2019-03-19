@@ -35,9 +35,4 @@ class WechatScanLogin implements ShouldBroadcast
     {
         return new Channel('scan-login');
     }
-
-    public function boradcastWith()
-    {
-        return ['name' => 'haha'];
-    }
 }

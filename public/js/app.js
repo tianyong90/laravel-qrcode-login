@@ -11165,24 +11165,44 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: function data() {
     return {
-      token: localStorage.getItem('my_token')
+      token: localStorage.getItem('my_token'),
+      user: {}
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     EchoInstance.channel('scan-login').listen('WechatScanLogin', function (e) {
-      console.log(e.token);
+      console.log(e);
       _this.token = e.token;
       localStorage.setItem('my_token', _this.token);
       console.log('login');
     });
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/current-user').then(function (response) {
-      console.log(response.data);
-    });
+
+    if (this.token) {
+      this.fetchUserInfo();
+    }
   },
   methods: {
-    refreshQrcode: function refreshQrcode() {}
+    fetchUserInfo: function fetchUserInfo() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/current-user').then(function (response) {
+        _this2.user = response.data;
+      });
+    },
+    logout: function logout() {
+      this.token = '';
+      this.user = {};
+      localStorage.removeItem('my_token');
+    }
+  },
+  watch: {
+    token: function token(val) {
+      if (val) {
+        this.fetchUserInfo();
+      }
+    }
   }
 });
 
@@ -11275,8 +11295,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\code\laravel-scan-login\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\code\laravel-scan-login\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\code\laravel-qrcode-login\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\code\laravel-qrcode-login\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

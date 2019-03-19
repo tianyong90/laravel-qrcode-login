@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,25 +11,25 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js').
+  sass('resources/sass/app.scss', 'public/css')
 
 mix.extract(['vue', 'axios'])
 
-mix.browserSync({
-   proxy: 'laravel-scan-login.test/',
-   // startPath: '',
-   open: false,
-   reloadOnRestart: true,
-   watchOptions: {
-      usePolling: true
-   },
-   files: [
-      'app/**/*.php',
-      'resources/views/**/*.php',
-      'public/js/**/*.js',
-      'public/css/**/*.css',
-      'resources/lang/**/*.php',
-      'resources/lang/**/*.json',
-   ]
-})
+// mix.browserSync({
+//   proxy: 'laravel-scan-login.test/',
+//   // startPath: '',
+//   open: false,
+//   reloadOnRestart: true,
+//   watchOptions: {
+//     usePolling: true,
+//   },
+//   files: [
+//     'app/**/*.php',
+//     'resources/views/**/*.php',
+//     'public/js/**/*.js',
+//     'public/css/**/*.css',
+//     'resources/lang/**/*.php',
+//     'resources/lang/**/*.json',
+//   ],
+// })
