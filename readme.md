@@ -1,7 +1,11 @@
 # laravel-qrcode-login
 
+本项目是配置本人博客文章而创建的一个小示例项目。
+
+[博客原文地址](https://tianyong90.com/2019/03/19/laravel-laravel-echo-easywechat-shi-xian-wei-xin-sao-ma-deng-lu/)
+
+示例主要实现使用 Laravel + laravel-echo + EasyWechat 实现扫码登录的功能（非接入第微信开放平台的扫码登录）。
+
+## 大致效果截图
+
 ![screenshot](./images/screenshot.gif)
-
-这是一个配合个人博客文章而建立的示例项目，目前文章内容和本项目仍在整理之中，应该很快完工。 :smile:
-
-示例主要内容，使用 Laravel + laravel-echo + EasyWechat 实现扫码登录（非接入第微信开放平台的）。
